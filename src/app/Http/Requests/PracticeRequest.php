@@ -46,6 +46,8 @@ class PracticeRequest extends FormRequest
             'email.required' => 'メールアドレスを入力してください',
             'email.email' => '有効なメールアドレス形式を入力してください',
             'tel1.required' => '電話番号を入力してください',
+            'tel2.required' => '電話番号を入力してください',
+            'tel3.required' => '電話番号を入力してください',
             'address.required' => '住所を入力してください',
             'select.required' => 'お問い合わせの種類を選択してください',
             'content.required' => 'お問い合わせ内容を入力してください',

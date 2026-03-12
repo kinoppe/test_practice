@@ -82,7 +82,15 @@
         </div>
         <div class="form__button">
             <button class="form__button-submit">送信</button>
-            <button class="edit" type="button" onclick="history.back()" >修正</button>
+        </div>
+    </form>
+    
+    <form action="/" method="get">
+        @foreach($contact as $key => $value)
+        <input type="hidden" name="{{$key}}" value="{{$value}}">
+        @endforeach
+        <div class="form__button">
+            <button class="edit" type="submit">修正</button>
         </div>
     </form>
 </div>

@@ -19,7 +19,7 @@
             <div class="form__group-content">
                 <div class="form__input--text">
                     <div class="form__input-name">
-                        <input type="text" name="last" placeholder="例：山田" value="{{ old('last') }}">
+                        <input type="text" name="last" placeholder="例：山田" value="{{ old('last',request('last')) }}">
                         <div class="form__error">
                         @error('last')
                         {{$message}}
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <div class="form__input-name">
-                        <input type="text" name="first" placeholder="例：太郎" value="{{ old('first') }}">
+                        <input type="text" name="first" placeholder="例：太郎" value="{{ old('first',request('first')) }}">
                         <div class="form__error">
                         @error('first')
                         {{$message}}
@@ -45,11 +45,11 @@
             <div class="form__group-content">
                 <div class="form__input--radio">
                     <label><input type="radio" name="gender" value="1"
-                    @checked(old('gender')=='1')><span>男性</span></label>
+                    {{old('gender',request('gender'))=='1' ? 'checked' : ''}}><span>男性</span></label>
                     <label><input type="radio" name="gender" value="2"
-                    @checked(old('gender')=='2')><span>女性</span></label>
+                    {{old('gender',request('gender'))=='2' ? 'checked' : ''}}><span>女性</span></label>
                     <label><input type="radio" name="gender" value="3"
-                    @checked(old('gender')=='3')><span>その他</span></label>
+                    {{old('gender',request('gender'))=='3' ? 'checked' : ''}}><span>その他</span></label>
                 </div>
                 <div class="form__error">
                     @error('gender')
@@ -65,7 +65,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="email" name="email" placeholder="例：test@example" value="{{ old('email') }}">
+                    <input type="email" name="email" placeholder="例：test@example" value="{{ old('email',request('email')) }}">
                 </div>
                 <div class="form__error">
                     @error('email')
@@ -81,12 +81,18 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--tel">
-                    <input type="tel" name="tel1" maxlength="3" placeholder="080" value="{{ old('tel1') }}"><span>-</span>
-                    <input type="tel" name="tel2" maxlength="4" placeholder="1234" value="{{ old('tel2') }}"><span>-</span>
-                    <input type="tel" name="tel3" maxlength="4" placeholder="5678" value="{{ old('tel3') }}">
+                    <input type="tel" name="tel1" maxlength="3" placeholder="080" value="{{ old('tel1',request('tel1')) }}"><span>-</span>
+                    <input type="tel" name="tel2" maxlength="4" placeholder="1234" value="{{ old('tel2',request('tel2')) }}"><span>-</span>
+                    <input type="tel" name="tel3" maxlength="4" placeholder="5678" value="{{ old('tel3',request('tel3')) }}">
                 </div>
                 <div class="form__error">
                     @error('tel1')
+                    {{$message}}
+                    @enderror
+                    @error('tel2')
+                    {{$message}}
+                    @enderror
+                    @error('tel3')
                     {{$message}}
                     @enderror
                 </div>
@@ -99,7 +105,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="text" name="address" placeholder="例：東京都渋谷区千駄ヶ谷1-2-3" value="{{ old('address') }}">
+                    <input type="text" name="address" placeholder="例：東京都渋谷区千駄ヶ谷1-2-3" value="{{ old('address',request('address')) }}">
                 </div>
                 <div class="form__error">
                     @error('address')
@@ -114,7 +120,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="text" name="address2" placeholder="例：千駄ヶ谷マンション101" value="{{ old('address2') }}">
+                    <input type="text" name="address2" placeholder="例：千駄ヶ谷マンション101" value="{{ old('address2',request('address2')) }}">
                 </div>
             </div>
         </div>
@@ -126,11 +132,11 @@
             <div class="form__group-content">
                 <div class="form__input--select">
                 <select class="search-form__item-select" name="select">
-                    <option value="" disabled {{old('select') ? '' : 'selected'}}>選択してください</option>
+                    <option value="" disabled {{old('select',request('select')) ? '' : 'selected'}}>選択してください</option>
                     <option value="商品の交換について"
-                    @selected(old('select')=='商品の交換について')>商品の交換について</option>
+                    @selected(old('select',request('select'))=='商品の交換について')>商品の交換について</option>
                     <option value="商品のキャンセルについて"
-                    @selected(old('select')=='商品のキャンセルについて')>商品のキャンセルについて</option>
+                    @selected(old('select',request('select'))=='商品のキャンセルについて')>商品のキャンセルについて</option>
                 </select>
                 </div>
                 <div class="form__error">
@@ -147,7 +153,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--textarea">
-                    <textarea name="content" placeholder="お問い合わせ内容をご記載ください" >{{ old('content') }}</textarea>
+                    <textarea name="content" placeholder="お問い合わせ内容をご記載ください" >{{ old('content',request('content')) }}</textarea>
                 </div>
                 <div class="form__error">
                     @error('content')
